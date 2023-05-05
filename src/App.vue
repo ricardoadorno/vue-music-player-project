@@ -1,12 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import PlayerContainer from "./container/PlayerContainer.vue";
+</script>
 
 <template>
-  <h1>Hello</h1>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nihil
-    eligendi blanditiis aliquam repudiandae, pariatur hic in non magni laborum.
-  </p>
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <h1 class="text-center">Vue Music Player</h1>
+  <PlayerContainer class="player" />
 </template>
 
-<style scoped></style>
+<style scoped>
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+</style>
