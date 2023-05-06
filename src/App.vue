@@ -3,9 +3,22 @@ import PlayerContainer from "./container/PlayerContainer.vue";
 import SongsListContainer from "./container/SongsListContainer.vue";
 import PlayListContainer from "./container/PlaylistsContainer.vue";
 import Navbar from "./components/Navbar.vue";
+
+import store from "./store";
+
+import { computed } from "vue";
+
+// const count = computed(() => store.state.count);
 </script>
 
 <template>
+  <!-- <div>
+    <h1>
+      {{ count }}
+    </h1>
+    <button @click="() => store.commit('increment')">+</button>
+  </div> -->
+
   <Navbar />
   <main class="main">
     <SongsListContainer class="song-list" />
