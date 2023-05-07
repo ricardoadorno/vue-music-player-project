@@ -3,8 +3,6 @@ import { ref } from "vue";
 
 const playlistName = ref("Playlist Name");
 
-import store from "../store";
-
 const items = ref([
   { title: "Playlist 1" },
   { title: "Playlist 2" },

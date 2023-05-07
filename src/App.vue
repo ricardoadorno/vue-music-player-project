@@ -3,23 +3,15 @@ import PlayerContainer from "./container/PlayerContainer.vue";
 import SongsListContainer from "./container/SongsListContainer.vue";
 import PlayListContainer from "./container/PlaylistsContainer.vue";
 import Navbar from "./components/Navbar.vue";
-
-import store from "./store";
-
-import { computed } from "vue";
-
-// const count = computed(() => store.state.count);
 </script>
 
 <template>
-  <!-- <div>
-    <h1>
-      {{ count }}
-    </h1>
-    <button @click="() => store.commit('increment')">+</button>
-  </div> -->
-
   <Navbar />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
   <main class="main">
     <SongsListContainer class="song-list" />
     <PlayListContainer class="playlist" />
@@ -42,9 +34,18 @@ import { computed } from "vue";
 .playlist {
   flex: 12;
 }
-
 .main {
   display: flex;
   width: 100%;
+}
+
+/* Transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
