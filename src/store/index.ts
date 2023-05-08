@@ -1,20 +1,59 @@
-// store.ts
-import { InjectionKey } from "vue";
-import { createStore, useStore as baseUseStore, Store } from "vuex";
+import { createStore } from "vuex";
 
-export interface State {
-  count: number;
-}
-
-export const key: InjectionKey<Store<State>> = Symbol();
-
-export const store = createStore<State>({
-  state: {
-    count: 0,
+const store = createStore({
+  state() {
+    return {
+      PlaylistsArray: [
+        {
+          id: 1,
+          url: "",
+          picUrl: "",
+          name: "Playlist 1",
+          playlist: [
+            {
+              id: 0,
+              name: "",
+              artist: "",
+              album: "",
+              duration: 0,
+            },
+          ],
+        },
+        {
+          id: 2,
+          url: "",
+          picUrl: "",
+          name: "Playlist 2",
+          playlist: [
+            {
+              id: 0,
+              name: "",
+              artist: "",
+              album: "",
+              duration: 0,
+            },
+          ],
+        },
+        {
+          id: 3,
+          url: "",
+          picUrl: "",
+          name: "Playlist 3",
+          playlist: [
+            {
+              id: 0,
+              name: "",
+              artist: "",
+              album: "",
+              duration: 0,
+            },
+          ],
+        },
+      ],
+    };
   },
+  mutations: {},
+  actions: {},
 });
 
-// define your own `useStore` composition function
-export function useStore() {
-  return baseUseStore(key);
-}
+export default store;

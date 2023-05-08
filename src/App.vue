@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import PlayerContainer from "./container/PlayerContainer.vue";
-import SongsListContainer from "./container/SongsListContainer.vue";
-import PlayListContainer from "./container/PlaylistsContainer.vue";
 import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
   <Navbar />
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+
   <main class="main">
-    <SongsListContainer class="song-list" />
-    <PlayListContainer class="playlist" />
+    <router-view v-slot="{ Component }">
+      <!-- <transition name="fade" mode="out-in"> // TODO Fix transition-->
+      <component :is="Component" />
+      <!-- </transition> -->
+    </router-view>
   </main>
+
   <PlayerContainer class="player" />
 </template>
 
@@ -25,20 +23,11 @@ import Navbar from "./components/Navbar.vue";
   bottom: 0;
   width: 100%;
 }
-.song-list {
-  flex: 3;
-  background-color: #272727;
-  color: white;
-}
 
-.playlist {
-  flex: 12;
-}
 .main {
   display: flex;
   width: 100%;
 }
-
 /* Transition */
 .fade-enter-active,
 .fade-leave-active {

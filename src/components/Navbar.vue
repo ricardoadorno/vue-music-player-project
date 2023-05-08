@@ -3,11 +3,13 @@
 <template>
   <nav class="navbar">
     <h1>Vue Music Player</h1>
-    <div>
-      <router-link to="/">Go to Home</router-link>
-      <router-link to="/about">Go to About</router-link>
+
+    <div class="navbar-left">
+      <router-link class="nav-link" to="/">Playlists</router-link>
+      <router-link class="nav-link" to="/about">About</router-link>
+      <div class="horizontal-divider" />
+      By Ricardo Adorno
     </div>
-    <div>By Ricardo Adorno</div>
   </nav>
 </template>
 
@@ -18,19 +20,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 1rem;
+  padding: 0.4rem 1.5rem;
 }
 
-.navbar-nav {
+.navbar-left {
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  align-items: center;
   gap: 1rem;
 }
 
+.horizontal-divider {
+  width: 1px;
+  height: 1.5rem;
+  background-color: #fff;
+}
+
 .nav-link {
-  color: #fff;
+  color: dodgerblue;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 </style>
