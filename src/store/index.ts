@@ -9,10 +9,17 @@ const store = createStore({
           url: "",
           picUrl: "",
           name: "Playlist 1",
-          playlist: [
+          songs: [
             {
               id: 0,
-              name: "",
+              name: "123",
+              artist: "",
+              album: "",
+              duration: 0,
+            },
+            {
+              id: 1,
+              name: "123",
               artist: "",
               album: "",
               duration: 0,
@@ -24,7 +31,7 @@ const store = createStore({
           url: "",
           picUrl: "",
           name: "Playlist 2",
-          playlist: [
+          songs: [
             {
               id: 0,
               name: "",
@@ -39,7 +46,7 @@ const store = createStore({
           url: "",
           picUrl: "",
           name: "Playlist 3",
-          playlist: [
+          songs: [
             {
               id: 0,
               name: "",
@@ -50,10 +57,17 @@ const store = createStore({
           ],
         },
       ],
+      currentPlaylist: 0,
     };
   },
   mutations: {},
-  actions: {},
+  actions: {
+    setCurrentPlaylist(context, payload) {
+      console.log(payload);
+
+      context.state.currentPlaylist = payload;
+    },
+  },
 });
 
 export default store;

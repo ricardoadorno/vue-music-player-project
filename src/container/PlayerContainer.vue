@@ -1,8 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
 import { ref } from "vue";
 
-const musicUrl =
-  "https://ia800605.us.archive.org/32/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3";
+export default {
+  name: "PlayerContainer",
+  data() {
+    return {
+      audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    };
+  },
+};
 
 const playing = ref(false);
 const currentTime = ref(0);
@@ -26,7 +32,10 @@ function playOrPause() {
 
 <template>
   <div class="bg-amber-darken-4 px-8 pt-1">
-    <div class="player-topside">
+    <audio ref="audio" controls>
+      <source :src="audioUrl" type="audio/mpeg" />
+    </audio>
+    <!-- <div class="player-topside">
       <div>{{ songName }}</div>
 
       <div class="d-flex justify-center align-center">
@@ -43,7 +52,7 @@ function playOrPause() {
       </div>
     </div>
 
-    <!-- <div class="player-downside">
+    <div class="player-downside">
       <div>{{ toMinutes(currentTime) }}/{{ toMinutes(duration) }}</div>
 
       <v-slider track-color="white" />

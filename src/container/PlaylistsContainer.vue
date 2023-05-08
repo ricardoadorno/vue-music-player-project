@@ -1,51 +1,38 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-const playlistName = ref("Playlist Name");
-
-const items = ref([
-  { title: "Playlist 1" },
-  { title: "Playlist 2" },
-  { title: "Playlist 3" },
-  { title: "Playlist 4" },
-]);
+import PlayList from "../components/Playlist.vue";
 </script>
 
 <template>
-  <div class="mt-8 mx-8">
-    <div class="playlist-content">
-      <img src="https://placehold.it/350x350" />
-      <v-list class="list">
-        <h2 class="ma-4">{{ playlistName }}</h2>
-
-        <v-list-item
-          v-for="(item, index) in items"
-          :key="index"
-          :value="index"
-          prepend-icon="fas fa-music"
-          active-color="amber"
-        >
-          <v-list-item-title class="ma-4">{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </div>
-  </div>
+  <aside>
+    <v-list class="playlists-sidebar">
+      <h2 class="text-center pa-2">Playlists</h2>
+      <v-list-item
+        class="pa-1"
+        v-for="(item, index) in $store.state.PlaylistsArray"
+        :key="item.id"
+        :value="index"
+        :on-click="() => $store.commit('setCurrentPlaylist', index)"
+      >
+        <v-list-item-title class="ma-4">{{ item.name }}</v-list-item-title>
+      </v-list-item>
+    </v-list>
+  </aside>
+  <PlayList class="playlist" />
 </template>
 
 <style scoped>
-.playlist-content {
-  display: flex;
-  justify-content: flex-start;
+.playlists-sidebar {
   background-color: rgb(22, 19, 53);
-  padding: 2rem;
-  border-radius: 1rem;
+  color: white;
   gap: 1rem;
+  height: 100%;
 }
 
-.list {
-  background-color: rgb(35, 28, 114);
-  color: white;
-  border-radius: 1rem;
-  width: 100%;
+aside {
+  flex: 3;
+}
+
+.playlist {
+  flex: 10;
 }
 </style>

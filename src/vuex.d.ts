@@ -7,7 +7,7 @@ declare module "@vue/runtime-core" {
       url: string;
       picUrl: string;
       name: string;
-      playlist: Array<{
+      songs: Array<{
         id: number;
         name: string;
         artist: string;
@@ -15,6 +15,7 @@ declare module "@vue/runtime-core" {
         duration: number;
       }>;
     }>;
+    currentPlaylist: number;
   }
 
   interface ComponentCustomProperties {
